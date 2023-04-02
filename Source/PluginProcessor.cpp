@@ -13,6 +13,7 @@
 //constants
 #define VOL_ARRAY_SIZE 256
 #define BIAS 0.4f
+#define DC_BLOCK_COEFF 0.9995f
 
 //==============================================================================
 THICCAudioProcessor::THICCAudioProcessor()
@@ -338,7 +339,7 @@ void THICCAudioProcessor::processBlock (juce::AudioBuffer<float>& buffer, juce::
                     }
 
                     //dc blocker
-                    dcOutput[channel] = sampleData - dcInput[channel] + 0.999f * dcOutput[channel];
+                    dcOutput[channel] = sampleData - dcInput[channel] + DC_BLOCK_COEFF * dcOutput[channel];
                     dcInput[channel] = sampleData;
                     sampleData = dcOutput[channel];
                 }
@@ -351,7 +352,7 @@ void THICCAudioProcessor::processBlock (juce::AudioBuffer<float>& buffer, juce::
                         sampleData = sampleData > 0 ? waveShape(sampleData, waveType, softness, 0, clipPeaks) : sampleData;
 
                         //dc blocker
-                        dcOutput[channel] = sampleData - dcInput[channel] + 0.999f * dcOutput[channel];
+                        dcOutput[channel] = sampleData - dcInput[channel] + DC_BLOCK_COEFF * dcOutput[channel];
                         dcInput[channel] = sampleData;
                         sampleData = dcOutput[channel];
                     }
@@ -380,7 +381,7 @@ void THICCAudioProcessor::processBlock (juce::AudioBuffer<float>& buffer, juce::
                 }
 
                 //dc blocker
-                dcOutput2[channel] = sampleData - dcInput2[channel] + 0.999f * dcOutput2[channel];
+                dcOutput2[channel] = sampleData - dcInput2[channel] + DC_BLOCK_COEFF * dcOutput2[channel];
                 dcInput2[channel] = sampleData;
                 sampleData = dcOutput2[channel];
 
