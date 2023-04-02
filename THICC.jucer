@@ -4,7 +4,7 @@
               addUsingNamespaceToJuceHeader="0" displaySplashScreen="0" jucerFormatVersion="1"
               companyWebsite="lysultima.github.io" companyName="Fuiya" splashScreenColour="Dark"
               pluginFormats="buildAU,buildVST3" pluginVST3Category="Distortion"
-              version="1.0.0" pluginManufacturerCode="Fui8" pluginCode="Th1c"
+              version="1.0.1" pluginManufacturerCode="Fui8" pluginCode="Th1c"
               pluginAAXCategory="8192" includeBinaryInJuceHeader="1">
   <MAINGROUP id="NlxQuh" name="THICC">
     <GROUP id="{8EB1F4DF-DD4D-D061-1FBB-BD9F56A75F1C}" name="Source">
